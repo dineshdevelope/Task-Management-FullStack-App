@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../Constants/URL";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ReadTask = () => {
   const [formdata, setFormdata] = useState([]);
@@ -20,6 +21,7 @@ const ReadTask = () => {
     if (confirm) {
       const res = await axios.delete(API_URL + _id);
       console.log(res.data);
+      toast.success("Task Deleted Successfully");
       showData();
     }
   };

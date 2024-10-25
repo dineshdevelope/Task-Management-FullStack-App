@@ -5,6 +5,7 @@ import { z } from "zod";
 import axios from "axios";
 import { API_URL } from "../Constants/URL";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   title: z.string().min(3).max(25),
@@ -35,6 +36,7 @@ const EditTask = () => {
         title,
         message,
       });
+      toast.success("Task Edited Successfully");
       navigate("/read");
       console.log(data);
     } catch (error) {

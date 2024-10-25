@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import API_URL from "../Constants/URL";
 
 const formSchema = z.object({
@@ -12,8 +12,6 @@ const formSchema = z.object({
 });
 
 const HomePage = () => {
-  const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -31,7 +29,7 @@ const HomePage = () => {
       });
     };
     sendDataToServer();
-    navigate("/read");
+    toast.success("Form Sumbitted Sucessfully");
   };
   return (
     <div>
